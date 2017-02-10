@@ -1,0 +1,158 @@
+/*
+RED - #fe2a1b;
+Brown - #92520f;
+Beige - #f7b442;
+*/
+.theField {
+  text-align: center;
+  margin-top: 25px;
+}
+.row {
+  text-align: center;
+}
+.cell {
+  text-align: center;
+  height: 10px;
+  width: 10px;
+  border: 1px solid;
+}
+
+/* BEGIN REDS */
+
+.a4 {
+  background-color: #fe2a1b;
+}
+.a5 {
+  background-color: #fe2a1b;
+}
+.a6 {
+  background-color: #fe2a1b;
+}
+.a7 {
+  background-color: #fe2a1b;
+}
+.a8 {
+  background-color: #fe2a1b;
+}
+.b3 {
+  background-color: #fe2a1b;
+}
+.b4 {
+  background-color: #fe2a1b;
+}
+.b5 {
+  background-color: #fe2a1b;
+}
+.b6 {
+  background-color: #fe2a1b;
+}
+.b7 {
+  background-color: #fe2a1b;
+}
+.b8 {
+  background-color: #fe2a1b;
+}
+.b9 {
+  background-color: #fe2a1b;
+}
+.b10 {
+  background-color: #fe2a1b;
+}
+.b11 {
+  background-color: #fe2a1b;
+}
+.hi5 {
+  background-color: #fe2a1b;
+}
+.i5 {
+  background-color: #fe2a1b;
+}
+.i8 {
+  background-color: #fe2a1b;
+}
+.j5 {
+  background-color: #fe2a1b;
+}
+.j6 {
+  background-color: #fe2a1b;
+}
+.j7 {
+  background-color: #fe2a1b;
+}
+.j8 {
+  background-color: #fe2a1b;
+}
+/* k = 11 */
+.k4 {
+  background-color: #fe2a1b;
+}
+.k6 {
+  background-color: #fe2a1b;
+}
+.k7 {
+  background-color: #fe2a1b;
+}
+.k9 {
+  background-color: #fe2a1b;
+}
+.l4 {
+  background-color: #fe2a1b;
+}
+.l5 {
+  background-color: #fe2a1b;
+}
+.l6 {
+  background-color: #fe2a1b;
+}
+.l7 {
+  background-color: #fe2a1b;
+}
+.l8 {
+  background-color: #fe2a1b;
+}
+.l9 {
+  background-color: #fe2a1b;
+}
+.m3 {
+  background-color: #fe2a1b;
+}
+.m4 {
+  background-color: #fe2a1b;
+}
+.m5 {
+  background-color: #fe2a1b;
+}
+.m6 {
+  background-color: #fe2a1b;
+}
+.m7 {
+  background-color: #fe2a1b;
+}
+.m8 {
+  background-color: #fe2a1b;
+}
+.m9 {
+  background-color: #fe2a1b;
+}
+.m10 {
+  background-color: #fe2a1b;
+}
+.n3 {
+  background-color: #fe2a1b;
+}
+.n4 {
+  background-color: #fe2a1b;
+}
+.n5 {
+  background-color: #fe2a1b;
+}
+.n8 {
+  background-color: #fe2a1b;
+}
+.n9 {
+  background-color: #fe2a1b;
+}
+.n10 {
+  background-color: #fe2a1b;
+}
+/* END REDS */

@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="css/styles.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- LoDash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.4/lodash.js"></script>
+    <!-- Latest compiled and minified BootStrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <title></title>
+  </head>
+  <body>
+<!--
+    <div class=mario>
+    <table class="tableMario" id="tableMario">
+      <tr>
+        <td class="a1"></td>
+        <td class="a2"></td>
+        <td class="a3"><td>
+        <td class="a4"><td>
+        <td class="a5"><td>
+        <td class="a6"><td>
+        <td class="a7"></td>
+        <td class="a8"></td>
+        <td class="a9"><td>
+        <td class="a10"><td>
+        <td class="a11"><td>
+        <td class="a12"><td>
+      </tr>
+      <tr>
+        <td class="b1"></td>
+        <td class="b2"></td>
+        <td class="b3"><td>
+        <td class="b4"><td>
+        <td class="b5"><td>
+        <td class="b6"><td>
+        <td class="b7"></td>
+        <td class="b8"></td>
+        <td class="b9"><td>
+        <td class="b10"><td>
+        <td class="b11"><td>
+        <td class="b12"><td>
+      </tr>
+      <tr>
+        <td class="c1"></td>
+        <td class="c2"></td>
+        <td class="c3"><td>
+        <td class="c4"><td>
+        <td class="c5"><td>
+        <td class="c6"><td>
+        <td class="c7"></td>
+        <td class="c8"></td>
+        <td class="c9"><td>
+        <td class="c10"><td>
+        <td class="c11"><td>
+        <td class="c12"><td>
+      </tr>
+      <tr>
+        <td class="d1"></td>
+        <td class="d2"></td>
+        <td class="d3"><td>
+        <td class="d4"><td>
+        <td class="d5"><td>
+        <td class="d6"><td>
+        <td class="d7"></td>
+        <td class="d8"></td>
+        <td class="d9"><td>
+        <td class="d10"><td>
+        <td class="d11"><td>
+        <td class="d12"><td>
+      </tr>
+      <tr>
+        <td class="e1"></td>
+        <td class="e2"></td>
+        <td class="e3"><td>
+        <td class="e4"><td>
+        <td class="e5"><td>
+        <td class="e6"><td>
+        <td class="e7"></td>
+        <td class="e8"></td>
+        <td class="e9"><td>
+        <td class="e10"><td>
+        <td class="e11"><td>
+        <td class="e12"><td>
+      </tr>
+      <tr>
+        <td class="f1"></td>
+        <td class="f2"></td>
+        <td class="f3"><td>
+        <td class="f4"><td>
+        <td class="f5"><td>
+        <td class="f6"><td>
+        <td class="f7"></td>
+        <td class="f8"></td>
+        <td class="f9"><td>
+        <td class="f10"><td>
+        <td class="f11"><td>
+        <td class="f12"><td>
+      </tr>
+      <tr>
+        <td class="g1"></td>
+        <td class="g2"></td>
+        <td class="g3"><td>
+        <td class="g4"><td>
+        <td class="g5"><td>
+        <td class="g6"><td>
+        <td class="g7"></td>
+        <td class="g8"></td>
+        <td class="g9"><td>
+        <td class="g10"><td>
+        <td class="g11"><td>
+        <td class="g12"><td>
+      </tr>
+      <tr>
+        <td class="hi1"></td>
+        <td class="hi2"></td>
+        <td class="hi3"><td>
+        <td class="hi4"><td>
+        <td class="hi5"><td>
+        <td class="hi6"><td>
+        <td class="hi7"></td>
+        <td class="hi8"></td>
+        <td class="hi9"><td>
+        <td class="hi10"><td>
+        <td class="hi11"><td>
+        <td class="hi12"><td>
+      </tr>
+      <tr>
+        <td class="i1"></td>
+        <td class="i2"></td>
+        <td class="i3"><td>
+        <td class="i4"><td>
+        <td class="i5"><td>
+        <td class="i6"><td>
+        <td class="i7"></td>
+        <td class="i8"></td>
+        <td class="i9"><td>
+        <td class="i10"><td>
+        <td class="i11"><td>
+        <td class="i12"><td>
+      </tr>
+      <tr>
+        <td class="j1"></td>
+        <td class="j2"></td>
+        <td class="j3"><td>
+        <td class="j4"><td>
+        <td class="j5"><td>
+        <td class="j6"><td>
+        <td class="j7"></td>
+        <td class="j8"></td>
+        <td class="j9"><td>
+        <td class="j10"><td>
+        <td class="j11"><td>
+        <td class="j12"><td>
+      </tr>
+      <tr>
+        <td class="k1"></td>
+        <td class="k2"></td>
+        <td class="k3"><td>
+        <td class="k4"><td>
+        <td class="k5"><td>
+        <td class="k6"><td>
+        <td class="k7"></td>
+        <td class="k8"></td>
+        <td class="k9"><td>
+        <td class="k10"><td>
+        <td class="k11"><td>
+        <td class="k12"><td>
+      </tr>
+      <tr>
+        <td class="l1"></td>
+        <td class="l2"></td>
+        <td class="l3"><td>
+        <td class="l4"><td>
+        <td class="l5"><td>
+        <td class="l6"><td>
+        <td class="l7"></td>
+        <td class="l8"></td>
+        <td class="l9"><td>
+        <td class="l10"><td>
+        <td class="l11"><td>
+        <td class="l12"><td>
+      </tr>
+      <tr>
+        <td class="m1"></td>
+        <td class="m2"></td>
+        <td class="m3"><td>
+        <td class="m4"><td>
+        <td class="m5"><td>
+        <td class="m6"><td>
+        <td class="m7"></td>
+        <td class="m8"></td>
+        <td class="m9"><td>
+        <td class="m10"><td>
+        <td class="m11"><td>
+        <td class="m12"><td>
+      </tr>
+      <tr>
+        <td class="n1"></td>
+        <td class="n2"></td>
+        <td class="n3"><td>
+        <td class="n4"><td>
+        <td class="n5"><td>
+        <td class="n6"><td>
+        <td class="n7"></td>
+        <td class="n8"></td>
+        <td class="n9"><td>
+        <td class="n10"><td>
+        <td class="n11"><td>
+        <td class="n12"><td>
+      </tr>
+      <tr>
+        <td class="o1"></td>
+        <td class="o2"></td>
+        <td class="o3"><td>
+        <td class="o4"><td>
+        <td class="o5"><td>
+        <td class="o6"><td>
+        <td class="o7"></td>
+        <td class="o8"></td>
+        <td class="o9"><td>
+        <td class="o10"><td>
+        <td class="o11"><td>
+        <td class="o12"><td>
+      </tr>
+      <tr>
+        <td class="p1"></td>
+        <td class="p2"></td>
+        <td class="p3"><td>
+        <td class="p4"><td>
+        <td class="p5"><td>
+        <td class="p6"><td>
+        <td class="p7"></td>
+        <td class="p8"></td>
+        <td class="p9"><td>
+        <td class="p10"><td>
+        <td class="p11"><td>
+        <td class="p12"><td>
+      </tr>
+    </table>
+    </div>
+ -->
+
+    <div class="theMario">
+    <div class="md-col-12">
+      <div class="row">
+        <div class="cell a1">.</div>
+        <div class="cell a2">.</div>
+        <div class="cell a3">.</div>
+        <div class="cell a4">.</div>
+        <div class="cell a5">.</div>
+        <div class="cell a6"></div>
+        <div class="cell a7"></div>
+        <div class="cell a8"></div>
+        <div class="cell a9"></div>
+        <div class="cell a10"></div>
+        <div class="cell a11"></div>
+        <div class="cell a12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell b1">.</div>
+        <div class="cell b2">.</div>
+        <div class="cell b3">.</div>
+        <div class="cell b4"></div>
+        <div class="cell b5"></div>
+        <div class="cell b6"></div>
+        <div class="cell b7"></div>
+        <div class="cell b8"></div>
+        <div class="cell b9"></div>
+        <div class="cell b10"></div>
+        <div class="cell b11"></div>
+        <div class="cell b12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell c1">.</div>
+        <div class="cell c2">.</div>
+        <div class="cell c3">.</div>
+        <div class="cell c4"></div>
+        <div class="cell c5"></div>
+        <div class="cell c6"></div>
+        <div class="cell c7"></div>
+        <div class="cell c8"></div>
+        <div class="cell c9"></div>
+        <div class="cell c10"></div>
+        <div class="cell c11"></div>
+        <div class="cell c12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell d1"></div>
+        <div class="cell d2"></div>
+        <div class="cell d3"></div>
+        <div class="cell d4"></div>
+        <div class="cell d5"></div>
+        <div class="cell d6"></div>
+        <div class="cell d7"></div>
+        <div class="cell d8"></div>
+        <div class="cell d9"></div>
+        <div class="cell d10"></div>
+        <div class="cell d11"></div>
+        <div class="cell d12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell e1"></div>
+        <div class="cell e2"></div>
+        <div class="cell e3"></div>
+        <div class="cell e4"></div>
+        <div class="cell e5"></div>
+        <div class="cell e6"></div>
+        <div class="cell e7"></div>
+        <div class="cell e8"></div>
+        <div class="cell e9"></div>
+        <div class="cell e10"></div>
+        <div class="cell e11"></div>
+        <div class="cell e12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell f1"></div>
+        <div class="cell f2"></div>
+        <div class="cell f3"></div>
+        <div class="cell f4"></div>
+        <div class="cell f5"></div>
+        <div class="cell f6"></div>
+        <div class="cell f7"></div>
+        <div class="cell f8"></div>
+        <div class="cell f9"></div>
+        <div class="cell f10"></div>
+        <div class="cell f11"></div>
+        <div class="cell f12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell g1"></div>
+        <div class="cell g2"></div>
+        <div class="cell g3"></div>
+        <div class="cell g4"></div>
+        <div class="cell g5"></div>
+        <div class="cell g6"></div>
+        <div class="cell g7"></div>
+        <div class="cell g8"></div>
+        <div class="cell g9"></div>
+        <div class="cell g10"></div>
+        <div class="cell g11"></div>
+        <div class="cell g12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell hi1"></div>
+        <div class="cell hi2"></div>
+        <div class="cell hi3"></div>
+        <div class="cell hi4"></div>
+        <div class="cell hi5"></div>
+        <div class="cell hi6"></div>
+        <div class="cell hi7"></div>
+        <div class="cell hi8"></div>
+        <div class="cell hi9"></div>
+        <div class="cell hi10"></div>
+        <div class="cell hi11"></div>
+        <div class="cell hi12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell i1"></div>
+        <div class="cell i2"></div>
+        <div class="cell i3"></div>
+        <div class="cell i4"></div>
+        <div class="cell i5"></div>
+        <div class="cell i6"></div>
+        <div class="cell i7"></div>
+        <div class="cell i8"></div>
+        <div class="cell i9"></div>
+        <div class="cell i10"></div>
+        <div class="cell i11"></div>
+        <div class="cell i12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell j1"></div>
+        <div class="cell j2"></div>
+        <div class="cell j3"></div>
+        <div class="cell j4"></div>
+        <div class="cell j5"></div>
+        <div class="cell j6"></div>
+        <div class="cell j7"></div>
+        <div class="cell j8"></div>
+        <div class="cell j9"></div>
+        <div class="cell j10"></div>
+        <div class="cell j11"></div>
+        <div class="cell j12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell k1"></div>
+        <div class="cell k2"></div>
+        <div class="cell k3"></div>
+        <div class="cell k4"></div>
+        <div class="cell k5"></div>
+        <div class="cell k6"></div>
+        <div class="cell k7"></div>
+        <div class="cell k8"></div>
+        <div class="cell k9"></div>
+        <div class="cell k10"></div>
+        <div class="cell k11"></div>
+        <div class="cell k12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell l1"></div>
+        <div class="cell l2"></div>
+        <div class="cell l3"></div>
+        <div class="cell l4"></div>
+        <div class="cell l5"></div>
+        <div class="cell l6"></div>
+        <div class="cell l7"></div>
+        <div class="cell l8"></div>
+        <div class="cell l9"></div>
+        <div class="cell l10"></div>
+        <div class="cell l11"></div>
+        <div class="cell l12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell m1"></div>
+        <div class="cell m2"></div>
+        <div class="cell m3"></div>
+        <div class="cell m4"></div>
+        <div class="cell m5"></div>
+        <div class="cell m6"></div>
+        <div class="cell m7"></div>
+        <div class="cell m8"></div>
+        <div class="cell m9"></div>
+        <div class="cell m10"></div>
+        <div class="cell m11"></div>
+        <div class="cell m12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell n1"></div>
+        <div class="cell n2"></div>
+        <div class="cell n3"></div>
+        <div class="cell n4"></div>
+        <div class="cell n5"></div>
+        <div class="cell n6"></div>
+        <div class="cell n7"></div>
+        <div class="cell n8"></div>
+        <div class="cell n9"></div>
+        <div class="cell n10"></div>
+        <div class="cell n11"></div>
+        <div class="cell n12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell o1"></div>
+        <div class="cell o2"></div>
+        <div class="cell o3"></div>
+        <div class="cell o4"></div>
+        <div class="cell o5"></div>
+        <div class="cell o6"></div>
+        <div class="cell o7"></div>
+        <div class="cell o8"></div>
+        <div class="cell o9"></div>
+        <div class="cell o10"></div>
+        <div class="cell o11"></div>
+        <div class="cell o12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell p1"></div>
+        <div class="cell p2"></div>
+        <div class="cell p3"></div>
+        <div class="cell p4"></div>
+        <div class="cell p5"></div>
+        <div class="cell p6"></div>
+        <div class="cell p7"></div>
+        <div class="cell p8"></div>
+        <div class="cell p9"></div>
+        <div class="cell p10"></div>
+        <div class="cell p11"></div>
+        <div class="cell p12"></div>
+      </div>
+
+      <div class="row">
+        <div class="cell q1"></div>
+        <div class="cell q2"></div>
+        <div class="cell q3"></div>
+        <div class="cell q4"></div>
+        <div class="cell q5"></div>
+        <div class="cell q6"></div>
+        <div class="cell q7"></div>
+        <div class="cell q8"></div>
+        <div class="cell q9"></div>
+        <div class="cell q10"></div>
+        <div class="cell q11"></div>
+        <div class="cell q12"></div>
+      </div>
+    </div>
+
+
+    </div>
+
+
+    <script type="text/javascript" src="src/app.js"></script>
+
+  </body>
+</html>
