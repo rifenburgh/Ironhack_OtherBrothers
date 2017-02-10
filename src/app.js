@@ -1,8 +1,12 @@
+$("document").ready(function(){
+
 var animate = window.requestAnimateFrame = function (callback) {
   window.setTimeout(callback, 1000/30);
 
   //step();
 };
+
+
 
 var canvas = document.createElement("canvas");
 var width = 800;
@@ -35,25 +39,33 @@ function step() {
 function Italian() {
   this.x = 30;
   this.y = 1;
-
+  //RIGHT is 1
+  //LEFT is 2
+  this.direction = 1;
 }
 
 Italian.prototype.update = function() {
   var imgStanding = document.getElementById("marioStanding");
   var imgJumping = document.getElementById("marioJumping");
+  var imgStandingLeft = document.getElementById("marioStandingLeft");
+  var imgJumpingLeft = document.getElementById("marioJumpingLeft");
   var img;
 
 
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
-
-  if (this.y >= 350) {
+  if ((this.y >= 350) && (this.direction === 1)){
     this.y = 350;
     img = imgStanding;
-  }
-  else if (this.y < 350) {
+  } else if ((this.y >= 350) && (this.direction === 2)) {
+    this.y = 350;
+    img = imgStandingLeft;
+  } else if ((this.y < 350) && (this.direction === 1)) {
     this.y += 1;
     img = imgJumping;
+  } else if ((this.y < 350) && (this.direction === 2)) {
+    this.y += 1;
+    img = imgJumpingLeft;
   }
   context.drawImage(img,this.x,this.y);
 };
@@ -67,6 +79,22 @@ Italian.prototype.move = function (ev) {
   this.y -= 50;
   }
 };
+
+Italian.prototype.moveLeft = function(ev) {
+  this.direction = 2;
+  if (this.x > 30) {
+    context.fillRect(this.x, this.y, 30, 30);
+    this.x -= 10;
+  }
+};
+Italian.prototype.moveRight = function(ev) {
+  this.direction = 1;
+  if (this.x < 770) {
+    context.fillRect(this.x, this.y, 30, 30);
+    this.x += 10;
+  }
+};
+
 
 function Enemy() {
   this.x = 750;
@@ -124,7 +152,7 @@ animate(step);
 
 $("document").ready(function() {
   $(document).keydown(function(ev) {
-    var acceptableKeys = [32, 66];
+    var acceptableKeys = [32, 66, 37, 39];
     if (!acceptableKeys.includes(ev.keyCode)) {
       return;
     }
@@ -136,6 +164,13 @@ $("document").ready(function() {
       case 66:
         bullet.move();
         break;
+      case 37:
+        mario.moveLeft();
+        break;
+      case 39:
+        mario.moveRight();
+        break;
     }
   });
+});
 });
