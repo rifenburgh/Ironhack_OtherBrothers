@@ -39,28 +39,65 @@ function Italian() {
 }
 
 Italian.prototype.update = function() {
-  var img = document.getElementById("marioStanding");
-  console.log("Mario Updating");
+  var imgStanding = document.getElementById("marioStanding");
+  var imgJumping = document.getElementById("marioJumping");
+  var img;
+
+
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
 
   if (this.y >= 350) {
     this.y = 350;
+    img = imgStanding;
   }
   else if (this.y < 350) {
     this.y += 1;
+    img = imgJumping;
   }
   context.drawImage(img,this.x,this.y);
 };
+
 Italian.prototype.move = function (ev) {
   //move the italian
-
+  context.fillRect(this.x, this.y, 30, 30);
+  if (this.y < 30) {
+    this.y = 30;
+  } else {
+  this.y -= 50;
+  }
 };
 
+function Enemy() {
+  this.x = 750;
+  this.y = 50;
+}
+Enemy.prototype.update = function() {
+  if (this.x < 5) {
+    context.fillRect(this.x, this.y, 33, 30);
+    return;
+  }
+  var bullet = document.getElementById("bullet");
+  context.fillRect(this.x, this.y, 33, 30);
+  this.x -= 5;
+  context.drawImage(bullet, this.x, this.y);
+};
 
+Enemy.prototype.move = function() {
+  //Delete Current Flying Bullet
+  context.fillRect(this.x, this.y, 33, 30);
+  //Create generation point for the new bullet
+  this.y = (Math.floor(Math.random() * 350));
+  this.x = 800;
+};
 
 var update = function () {
     mario.update();
+    bullet.update();
+    bullet1.update();
+    bullet2.update();
+    bullet3.update();
+    bullet4.update();
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
@@ -73,5 +110,32 @@ var step = function () {
 };
 
 var mario = new Italian();
+var bullet = new Enemy();
+var bullet1 = new Enemy();
+var bullet2 = new Enemy();
+var bullet3 = new Enemy();
+var bullet4 = new Enemy();
+bullet1.move();
+bullet2.move();
+bullet3.move();
+bullet4.move();
 document.body.appendChild(canvas);
 animate(step);
+
+$("document").ready(function() {
+  $(document).keydown(function(ev) {
+    var acceptableKeys = [32, 66];
+    if (!acceptableKeys.includes(ev.keyCode)) {
+      return;
+    }
+    ev.preventDefault();
+    switch(ev.keyCode) {
+      case 32:
+        mario.move();
+        break;
+      case 66:
+        bullet.move();
+        break;
+    }
+  });
+});

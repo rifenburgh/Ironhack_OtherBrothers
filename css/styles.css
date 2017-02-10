@@ -7,6 +7,9 @@ Beige - #f7b442;
   text-align: center;
   margin-top: 25px;
 }
+.hidden {
+  display: none;
+}
 .row {
   text-align: center;
 }
