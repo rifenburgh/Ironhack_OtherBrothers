@@ -26,11 +26,25 @@ var render = function () {
 window.onload  = function() {
   //animate();
   context.fillStyle = "#5c94fc";
-  context.fillRect(0, 0, 800, 400)
+  context.fillRect(0, 0, 800, 400);
   context.fillStyle = "black";
   context.fillRect(0, 380, 800, 20);
   render(step);
   console.log("Animating");
+
+  ion.sound({
+    sounds: [
+      {name: "die"},
+      {name: "jump"},
+      {name: "mariotheme"}
+    ],
+    volume: 1.0,
+    path: "./ion/sounds/",
+    preload: true
+  });
+  ion.sound.play("mariotheme");
+
+
 };
 
 function step() {
@@ -78,6 +92,7 @@ Italian.prototype.move = function (ev) {
     this.y = 30;
   } else {
   this.y -= 50;
+  ion.sound.play("jump");
   }
 };
 
@@ -112,6 +127,7 @@ Enemy.prototype.update = function() {
   context.drawImage(bullet, this.x, this.y);
   //Test Mario's range against the left side of the bullet
   if (((mario.x + 30) === (this.x)) && ((mario.y > this.y) && (mario.y < (this.y + 30)))) {
+    ion.sound.play("die");
     console.log("Hit Bullet!");
   }
   // console.log(mario.x, mario.y, this.x, this.y);
@@ -156,18 +172,8 @@ bullet4.move();
 document.body.appendChild(canvas);
 animate(step);
 
-ion.sounds({
-  sounds: [
-    {name: die},
-    {name: jump},
-    {name: mariotheme}
-  ],
-  volume: 1.0,
-  path: "sounds/",
-  preload: true
-});
 
-$("document").ready(function() {
+// $("document").ready(function() {
   $(document).keydown(function(ev) {
     var acceptableKeys = [32, 66, 37, 39];
     if (!acceptableKeys.includes(ev.keyCode)) {
@@ -189,5 +195,5 @@ $("document").ready(function() {
         break;
     }
   });
-});
+// });
 });
