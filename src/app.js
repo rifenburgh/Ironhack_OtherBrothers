@@ -141,6 +141,33 @@ Enemy.prototype.move = function() {
   this.x = 800;
 };
 
+function Koopa() {
+  this.x = 750;
+  this.y = 355;
+}
+Koopa.prototype.update = function() {
+  //Koopa is 20 x 25
+  var koopa = document.getElementById("koopa");
+  if (this.x < 5) {
+    context.fillRect(this.x, this.y, 20, 25);
+    return;
+  }
+  context.fillRect(this.x, this.y, 20, 25);
+  this.x -= 2;
+  context.drawImage(koopa, this.x, this.y);
+  //Test Mario's range against the left side of the bullet
+  if (((mario.x + 30) === (this.x)) && ((mario.y > this.y) && (mario.y < (this.y + 25)))) {
+    ion.sound.play("die");
+    console.log("Hit Koopa!");
+  }
+
+};
+Koopa.prototype.move = function() {
+  context.fillRect(this.x, this.y, 20, 25);
+  //Create generation point for the new bullet
+  // this.y = (Math.floor(Math.random() * 350));
+  // this.x = 800;
+};
 var update = function () {
     mario.update();
     bullet.update();
@@ -148,6 +175,7 @@ var update = function () {
     bullet2.update();
     bullet3.update();
     bullet4.update();
+    koopa1.update();
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
@@ -165,10 +193,12 @@ var bullet1 = new Enemy();
 var bullet2 = new Enemy();
 var bullet3 = new Enemy();
 var bullet4 = new Enemy();
+var koopa1 = new Koopa();
 bullet1.move();
 bullet2.move();
 bullet3.move();
 bullet4.move();
+// koopa.move();
 document.body.appendChild(canvas);
 animate(step);
 
@@ -193,6 +223,8 @@ animate(step);
       case 39:
         mario.moveRight();
         break;
+      case 77:
+        var koopa1 = new Koopa();
     }
   });
 // });
