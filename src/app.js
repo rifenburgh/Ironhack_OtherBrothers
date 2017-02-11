@@ -156,6 +156,17 @@ bullet4.move();
 document.body.appendChild(canvas);
 animate(step);
 
+ion.sounds({
+  sounds: [
+    {name: die},
+    {name: jump},
+    {name: mariotheme}
+  ],
+  volume: 1.0,
+  path: "sounds/",
+  preload: true
+});
+
 $("document").ready(function() {
   $(document).keydown(function(ev) {
     var acceptableKeys = [32, 66, 37, 39];
