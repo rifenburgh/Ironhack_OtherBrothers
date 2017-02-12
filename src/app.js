@@ -111,7 +111,6 @@ Italian.prototype.moveRight = function(ev) {
   }
 };
 
-
 function Enemy() {
   this.x = 750;
   this.y = 50;
@@ -144,12 +143,16 @@ Enemy.prototype.move = function() {
 function Koopa() {
   this.x = 750;
   this.y = 355;
+  this.alive = true;
 }
 Koopa.prototype.update = function() {
   //Koopa is 20 x 25
   var koopa = document.getElementById("koopa");
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 20, 25);
+    return;
+  }
+  if (this.alive === false) {
     return;
   }
   context.fillRect(this.x, this.y, 20, 25);
@@ -167,8 +170,16 @@ Koopa.prototype.update = function() {
   if (((mario.x + 30) === this.x) && ((mario.y + 5) === this.y)) {
       console.log("Hit Koopa!");
       ion.sound.play("die");
+  }
+  if (((mario.x + 30) > this.x) && ((mario.y + 30) === this.y)) {
+      console.log("Koopa Die!");
+      ion.sound.play("stomp");
+      //Future Version - Turn into shell for 3 seconds and then erase koopa shell
+      context.fillRect(this.x, this.y, 20, 25);
+      this.alive = false;
 
   }
+
 };
 Koopa.prototype.move = function() {
   context.fillRect(this.x, this.y, 20, 25);
@@ -176,6 +187,10 @@ Koopa.prototype.move = function() {
   // this.y = (Math.floor(Math.random() * 350));
   // this.x = 800;
 };
+
+
+
+
 var update = function () {
     mario.update();
     bullet.update();
