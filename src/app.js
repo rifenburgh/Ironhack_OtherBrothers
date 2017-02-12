@@ -47,9 +47,9 @@ window.onload  = function() {
 
 };
 
-function step() {
-  render();
-}
+// function step() {
+//   render();
+// }
 
 function Italian() {
   this.x = 30;
@@ -155,12 +155,20 @@ Koopa.prototype.update = function() {
   context.fillRect(this.x, this.y, 20, 25);
   this.x -= 2;
   context.drawImage(koopa, this.x, this.y);
-  //Test Mario's range against the left side of the bullet
-  if (((mario.x + 30) === (this.x)) && ((mario.y > this.y) && (mario.y < (this.y + 25)))) {
-    ion.sound.play("die");
-    console.log("Hit Koopa!");
-  }
 
+  // console.log((mario.x + 30), (this.x));
+  //Test Mario's range against the left side of the bullet
+  // if (mario.x + 30 === this.x) {
+  //   if ((mario.y > this.y) && (mario.y < (this.y + 30))) {
+  //   console.log("Hit Koopa!");
+  //   ion.sound.play("die");
+  //   }
+  // }
+  if (((mario.x + 30) === this.x) && ((mario.y + 5) === this.y)) {
+      console.log("Hit Koopa!");
+      ion.sound.play("die");
+
+  }
 };
 Koopa.prototype.move = function() {
   context.fillRect(this.x, this.y, 20, 25);
