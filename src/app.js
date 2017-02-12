@@ -174,12 +174,13 @@ Koopa.prototype.update = function() {
   if (((mario.x + 30) > this.x) && ((mario.y + 30) === this.y)) {
       console.log("Koopa Die!");
       ion.sound.play("stomp");
-      //Future Version - Turn into shell for 3 seconds and then erase koopa shell
+      context.fillRect(this.x, this.y, 20, 25);
+      //!!TESTER!!
+      context.drawImage(koopashell, this.x, this.y);
+
       context.fillRect(this.x, this.y, 20, 25);
       this.alive = false;
-
   }
-
 };
 Koopa.prototype.move = function() {
   context.fillRect(this.x, this.y, 20, 25);
@@ -187,7 +188,21 @@ Koopa.prototype.move = function() {
   // this.y = (Math.floor(Math.random() * 350));
   // this.x = 800;
 };
+Koopa.prototype.dead = function() {
+  var koopashell = document.getElementById("koopashell");
+  if (this.alive === true) {
+    return;
+  }
+  if (this.x < -20) {
+    return;
+  }
+  // if (koopaCounter < 100) {
+    context.fillRect(this.x, this.y, 30, 22);
+    this.x -= 10;
+    context.drawImage(koopashell, this.x, this.y);
 
+// }
+};
 
 
 
@@ -199,6 +214,7 @@ var update = function () {
     bullet3.update();
     bullet4.update();
     koopa1.update();
+    koopa1.dead();
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
