@@ -73,15 +73,8 @@ Italian.prototype.update = function() {
   }
   if (this.lives <= 0) {
     console.log("Game Over!");
+    this.lives = 0;
     context.drawImage(gameOver, 250, 10);
-    // setTimeout(function() {
-    //   $(canvas).remove();
-    //   $(body).append('<img src="./Images/mariogameover.png"/>');
-    //   // context.drawImage(mariogameover, 10, 10);
-    //   // $("body").empty();
-    //   // $("body").append('<img src="./Images/mariogameover.png"/>');
-    // }, 3000);
-    //Include Level Cleared
     ion.sound.play("worldclear");
 
   }
@@ -334,6 +327,9 @@ animate(step);
 
 // $("document").ready(function() {
   $(document).keydown(function(ev) {
+    if (mario.lives <= 0) {
+      return;
+    }
     var acceptableKeys = [32, 66, 37, 39];
     if (!acceptableKeys.includes(ev.keyCode)) {
       return;
