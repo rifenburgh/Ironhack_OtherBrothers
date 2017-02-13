@@ -49,6 +49,8 @@ window.onload  = function() {
 function Italian() {
   this.x = 30;
   this.y = 1;
+  this.score = 0;
+  this.lives = 3;
   //RIGHT is 1
   //LEFT is 2
   this.direction = 1;
@@ -60,7 +62,8 @@ Italian.prototype.update = function() {
   var imgStandingLeft = document.getElementById("marioStandingLeft");
   var imgJumpingLeft = document.getElementById("marioJumpingLeft");
   var img;
-
+  $("#lives").html(this.lives + " x");
+  $("#score").html(mario.score + "/500 Points");
 
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
@@ -115,10 +118,15 @@ Enemy.prototype.update = function() {
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 33, 30);
     // console.log("Bullets re-creating?");
-    setTimeout(function(){ bullet2.move(); }, 1000);
-    setTimeout(function(){ bullet2.move(); }, 1500);
-    setTimeout(function(){ bullet3.move(); }, 2000);
-    setTimeout(function(){ bullet4.move(); }, 3000);
+    this.x = 800;
+    var that = this;
+    // setTimeout(function() {that.move(); }, 500);
+    // setTimeout(function() {bullet.move(); }, 750);
+    setTimeout(function() {bullet1.move(); }, 1500);
+    setTimeout(function() {bullet2.move(); }, 2500);
+    setTimeout(function() {bullet3.move(); }, 3500);
+    setTimeout(function() {bullet4.move(); }, 4000);
+
     return;
   }
   context.fillRect(this.x, this.y, 33, 30);
@@ -127,6 +135,7 @@ Enemy.prototype.update = function() {
   //Test Mario's range against the left side of the bullet
   if (((mario.x + 30) === (this.x)) && ((mario.y > this.y) && (mario.y < (this.y + 30)))) {
     ion.sound.play("die");
+    mario.lives -= 1;
     console.log("Hit Bullet!");
   }
   // console.log(mario.x, mario.y, this.x, this.y);
@@ -161,16 +170,20 @@ Koopa.prototype.update = function() {
   context.drawImage(koopa, this.x, this.y);
   if (((mario.x + 30) === this.x) && ((mario.y + 5) === this.y)) {
       console.log("Hit Koopa!");
+      mario.lives -= 1;
       ion.sound.play("die");
   }
   if (((mario.x + 30) > this.x) && ((mario.y + 30) === this.y)) {
       console.log("Koopa Die!");
       ion.sound.play("stomp");
-      context.fillRect(this.x, this.y, 20, 25);
+      mario.score += 100;
+
+      console.log(mario.score);
+      context.fillRect(this.x, this.y, 30, 25);
       //!!TESTER!!
       context.drawImage(koopashell, this.x, this.y);
 
-      context.fillRect(this.x, this.y, 20, 25);
+      context.fillRect(this.x, this.y, 30, 25);
       this.alive = false;
   }
 };
@@ -205,6 +218,8 @@ Cloud.prototype.update = function() {
   var cloud = document.getElementById("cloud");
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 50, 21);
+    that = this;
+    setTimeout(function() { that.move(); }, 200);
     return;
   }
   context.fillRect(this.x, this.y, 50, 21);
@@ -213,13 +228,13 @@ Cloud.prototype.update = function() {
 
 };
 Cloud.prototype.move = function() {
-
+  this.x = 850;
 };
 
 
 var update = function () {
     mario.update();
-    bullet.update();
+    // bullet.update();
     bullet1.update();
     bullet2.update();
     bullet3.update();
@@ -241,7 +256,11 @@ var step = function () {
 };
 
 var mario = new Italian();
-var bullet = new Enemy();
+// setTimeout(function() { var bullet1 = new Enemy();}, 50);
+// setTimeout(function() { var bullet2 = new Enemy();}, 750);
+// setTimeout(function() { var bullet2 = new Enemy();}, 1500);
+// setTimeout(function() { var bullet3 = new Enemy();}, 2250);
+// var bullet = new Enemy();
 var bullet1 = new Enemy();
 var bullet2 = new Enemy();
 var bullet3 = new Enemy();

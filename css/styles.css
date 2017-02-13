@@ -19,7 +19,14 @@ Beige - #f7b442;
   width: 10px;
   border: 1px solid;
 }
-
+#lives {
+  float: left;
+}
+.mario {
+  float: left;
+  padding-top: 20px;
+  padding-left: 10px;
+}
 /* BEGIN REDS */
 
 .a4 {
