@@ -23,12 +23,18 @@
         <h2 id="score">0 Points</h2>
       </div>
       <div class="col-md-4">
-        <h2 id="lives"></h2><img class="mario" src="./Images/mario.png" alt="Italian" />
+        <h2 id="lives">0 x</h2><img class="mario" src="./Images/mario.png" alt="Italian" />
       </div>
 
     </div>
     <div class="theField" id="theField">
       <!-- <canvas width="600" height="400"></canvas> -->
+    </div>
+    <div class="startGame" id="startGame">
+      <button class="btn btn-primary" onclick="startGame()">1 - Player</button><button class="btn btn-primary" onclick="startGame()">2 - Player</button>
+      <br>
+      <br>
+      <button class="btn btn-primary" onclick="startGame()">Start Game</button>
     </div>
     <div class="hidden">
       <img src="./Images/mario.png" id="marioStanding" width="30">
@@ -42,6 +48,9 @@
       <img src="./Images/koopashell.png" id="koopashell" width="30">
       <img src="./Images/tardis.png" id="tardis" width="30">
       <img src="./Images/levelcleared.png" id="levelcleared" width="30">
+      <img src="./Images/gameover.png" id="gameOver" >
+      <img src="./Images/mariogameover.png" id="mariogameover" >
+
 
     </div>
     <script text="text/javascript" src="ion/ion.sound.js"></script>

@@ -62,12 +62,28 @@ Italian.prototype.update = function() {
   var imgJumping = document.getElementById("marioJumping");
   var imgStandingLeft = document.getElementById("marioStandingLeft");
   var imgJumpingLeft = document.getElementById("marioJumpingLeft");
+  var gameOver = document.getElementById("gameOver");
+  var mariogameover = document.getElementById("mariogameover");
   var img;
   $("#lives").html(this.lives + " x");
   $("#score").html(mario.score + "/500 Points");
 
   if (this.score >= 500) {
     var tardis = new Tardis();
+  }
+  if (this.lives <= 0) {
+    console.log("Game Over!");
+    context.drawImage(gameOver, 250, 10);
+    // setTimeout(function() {
+    //   $(canvas).remove();
+    //   $(body).append('<img src="./Images/mariogameover.png"/>');
+    //   // context.drawImage(mariogameover, 10, 10);
+    //   // $("body").empty();
+    //   // $("body").append('<img src="./Images/mariogameover.png"/>');
+    // }, 3000);
+    //Include Level Cleared
+    ion.sound.play("worldclear");
+
   }
 
   context.fillStyle = "#5c94fc";
@@ -287,13 +303,10 @@ var step = function () {
     render();
     animate(step);
 };
+//Initiate Other Brothers' Game
+
 
 var mario = new Italian();
-// setTimeout(function() { var bullet1 = new Enemy();}, 50);
-// setTimeout(function() { var bullet2 = new Enemy();}, 750);
-// setTimeout(function() { var bullet2 = new Enemy();}, 1500);
-// setTimeout(function() { var bullet3 = new Enemy();}, 2250);
-// var bullet = new Enemy();
 var bullet1 = new Enemy();
 var bullet2 = new Enemy();
 var bullet3 = new Enemy();
@@ -302,11 +315,19 @@ var koopa1 = new Koopa();
 var koopa2 = new Koopa();
 var cloud = new Cloud();
 var tardis = new Tardis();
+// setTimeout(function() { var bullet1 = new Enemy();}, 50);
+// setTimeout(function() { var bullet2 = new Enemy();}, 750);
+// setTimeout(function() { var bullet2 = new Enemy();}, 1500);
+// setTimeout(function() { var bullet3 = new Enemy();}, 2250);
+// var bullet = new Enemy();
+
 // bullet1.move();
 // bullet2.move();
 // bullet3.move();
 // bullet4.move();
 // koopa.move();
+
+
 document.body.appendChild(canvas);
 animate(step);
 
