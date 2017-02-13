@@ -2,8 +2,6 @@ $("document").ready(function(){
 
 var animate = window.requestAnimateFrame = function (callback) {
   window.setTimeout(callback, 1000/30);
-
-  //step();
 };
 
 
@@ -36,6 +34,7 @@ window.onload  = function() {
     sounds: [
       {name: "die"},
       {name: "jump"},
+      {name: "stomp"},
       {name: "mariotheme"}
     ],
     volume: 1.0,
@@ -46,10 +45,6 @@ window.onload  = function() {
 
 
 };
-
-// function step() {
-//   render();
-// }
 
 function Italian() {
   this.x = 30;
@@ -116,11 +111,16 @@ function Enemy() {
   this.y = 50;
 }
 Enemy.prototype.update = function() {
+  var bullet = document.getElementById("bullet");
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 33, 30);
+    // console.log("Bullets re-creating?");
+    setTimeout(function(){ bullet2.move(); }, 1000);
+    setTimeout(function(){ bullet2.move(); }, 1500);
+    setTimeout(function(){ bullet3.move(); }, 2000);
+    setTimeout(function(){ bullet4.move(); }, 3000);
     return;
   }
-  var bullet = document.getElementById("bullet");
   context.fillRect(this.x, this.y, 33, 30);
   this.x -= 5;
   context.drawImage(bullet, this.x, this.y);
@@ -133,11 +133,10 @@ Enemy.prototype.update = function() {
 };
 
 Enemy.prototype.move = function() {
-  //Delete Current Flying Bullet
   context.fillRect(this.x, this.y, 33, 30);
   //Create generation point for the new bullet
+  this.x = 850;
   this.y = (Math.floor(Math.random() * 350));
-  this.x = 800;
 };
 
 function Koopa() {
@@ -148,8 +147,10 @@ function Koopa() {
 Koopa.prototype.update = function() {
   //Koopa is 20 x 25
   var koopa = document.getElementById("koopa");
-  if (this.x < 5) {
+  if ((this.x < 5) || (this.alive === false)) {
     context.fillRect(this.x, this.y, 20, 25);
+    setTimeout(function() { koopa1.move(); }, 6000);
+    setTimeout(function() { koopa2.move(); }, 3500);
     return;
   }
   if (this.alive === false) {
@@ -158,15 +159,6 @@ Koopa.prototype.update = function() {
   context.fillRect(this.x, this.y, 20, 25);
   this.x -= 2;
   context.drawImage(koopa, this.x, this.y);
-
-  // console.log((mario.x + 30), (this.x));
-  //Test Mario's range against the left side of the bullet
-  // if (mario.x + 30 === this.x) {
-  //   if ((mario.y > this.y) && (mario.y < (this.y + 30))) {
-  //   console.log("Hit Koopa!");
-  //   ion.sound.play("die");
-  //   }
-  // }
   if (((mario.x + 30) === this.x) && ((mario.y + 5) === this.y)) {
       console.log("Hit Koopa!");
       ion.sound.play("die");
@@ -187,6 +179,9 @@ Koopa.prototype.move = function() {
   //Create generation point for the new bullet
   // this.y = (Math.floor(Math.random() * 350));
   // this.x = 800;
+  this.alive = true;
+  this.x = 830;
+
 };
 Koopa.prototype.dead = function() {
   var koopashell = document.getElementById("koopashell");
@@ -200,10 +195,26 @@ Koopa.prototype.dead = function() {
     context.fillRect(this.x, this.y, 30, 22);
     this.x -= 10;
     context.drawImage(koopashell, this.x, this.y);
-
-// }
 };
+function Cloud() {
+  this.x = 750;
+  this.y = Math.floor(Math.random() * 100);
+}
+Cloud.prototype.update = function() {
+  //Cloud impage 50x21
+  var cloud = document.getElementById("cloud");
+  if (this.x < 5) {
+    context.fillRect(this.x, this.y, 50, 21);
+    return;
+  }
+  context.fillRect(this.x, this.y, 50, 21);
+  this.x -= 1;
+  context.drawImage(cloud, this.x, this.y);
 
+};
+Cloud.prototype.move = function() {
+
+};
 
 
 var update = function () {
@@ -215,6 +226,9 @@ var update = function () {
     bullet4.update();
     koopa1.update();
     koopa1.dead();
+    koopa2.update();
+    // koopa2.dead():
+    cloud.update();
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
@@ -233,10 +247,12 @@ var bullet2 = new Enemy();
 var bullet3 = new Enemy();
 var bullet4 = new Enemy();
 var koopa1 = new Koopa();
-bullet1.move();
-bullet2.move();
-bullet3.move();
-bullet4.move();
+var koopa2 = new Koopa();
+var cloud = new Cloud();
+// bullet1.move();
+// bullet2.move();
+// bullet3.move();
+// bullet4.move();
 // koopa.move();
 document.body.appendChild(canvas);
 animate(step);
