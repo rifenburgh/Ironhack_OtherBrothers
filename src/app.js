@@ -35,6 +35,7 @@ window.onload  = function() {
       {name: "die"},
       {name: "jump"},
       {name: "stomp"},
+      {name: "worldclear"},
       {name: "mariotheme"}
     ],
     volume: 1.0,
@@ -64,6 +65,10 @@ Italian.prototype.update = function() {
   var img;
   $("#lives").html(this.lives + " x");
   $("#score").html(mario.score + "/500 Points");
+
+  if (this.score >= 500) {
+    var tardis = new Tardis();
+  }
 
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
@@ -106,6 +111,23 @@ Italian.prototype.moveRight = function(ev) {
   if (this.x < 770) {
     context.fillRect(this.x, this.y, 30, 30);
     this.x += 10;
+  }
+};
+
+function Tardis() {
+  this.x = (Math.floor(Math.random() * 700) + 50);
+  this.y = (Math.floor(Math.random() * 300) + 50);
+}
+Tardis.prototype.update = function() {
+  if (mario.score < 500) {
+    return;
+  }
+  var tardis = document.getElementById("tardis");
+  context.drawImage(tardis,this.x,this.y);
+  if (((mario.x + 15) === (tardis.x + 15)) && ((mario.y + 15) === (tardis.y + 15))) {
+    console.log("Level Cleared!!!");
+    //Include Level Cleared
+    ion.sound.play("worldclear");
   }
 };
 
@@ -244,6 +266,7 @@ var update = function () {
     koopa2.update();
     // koopa2.dead():
     cloud.update();
+    tardis.update();
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
@@ -268,6 +291,7 @@ var bullet4 = new Enemy();
 var koopa1 = new Koopa();
 var koopa2 = new Koopa();
 var cloud = new Cloud();
+var tardis = new Tardis();
 // bullet1.move();
 // bullet2.move();
 // bullet3.move();
