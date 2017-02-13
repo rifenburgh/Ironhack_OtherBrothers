@@ -117,15 +117,25 @@ Italian.prototype.moveRight = function(ev) {
 function Tardis() {
   this.x = (Math.floor(Math.random() * 700) + 50);
   this.y = (Math.floor(Math.random() * 300) + 50);
+  this.x = 750;
+  this.y = 326;
 }
 Tardis.prototype.update = function() {
   if (mario.score < 500) {
     return;
   }
   var tardis = document.getElementById("tardis");
+  var levelcleared = document.getElementById("levelcleared");
+
   context.drawImage(tardis,this.x,this.y);
-  if (((mario.x + 15) === (tardis.x + 15)) && ((mario.y + 15) === (tardis.y + 15))) {
+
+  if (((mario.x) > (this.x -1)) && ((mario.y) > (this.y))) {
     console.log("Level Cleared!!!");
+    context.drawImage(levelcleared, 200, 150);
+    setTimeout(function() {
+      $("body").empty();
+      $("body").append('<img src="./Images/win.gif"/>');
+    }, 3000);
     //Include Level Cleared
     ion.sound.play("worldclear");
   }
