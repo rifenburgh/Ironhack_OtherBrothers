@@ -137,6 +137,7 @@ Tardis.prototype.update = function() {
       $("body").append('<img src="./Images/win.gif"/>');
     }, 3000);
     //Include Level Cleared
+    ion.sound.stop("mariotheme");
     ion.sound.play("worldclear");
   }
 };
@@ -265,7 +266,7 @@ Cloud.prototype.update = function() {
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 50, 21);
     that = this;
-    setTimeout(function() { that.move(); }, 200);
+    setTimeout(function() { that.move(); }, 3000);
     return;
   }
   context.fillRect(this.x, this.y, 50, 21);
@@ -288,12 +289,16 @@ Rocks.prototype.update = function() {
   if (this.x < 5) {
     context.fillRect(this.x, this.y, 160, 70);
     that = this;
-    setTimeout(function() { that.move(); }, 200);
+    setTimeout(function() { that.move(); }, 3000);
     return;
   }
   context.fillRect(this.x, this.y, 160, 70);
   this.x -= 1;
   context.drawImage(rocks, this.x, this.y);
+};
+Rocks.prototype.move = function() {
+  this.x = 625;
+  this.y = 310;
 };
 
 var update = function () {
@@ -358,6 +363,7 @@ animate(step);
 // $("document").ready(function() {
   $(document).keydown(function(ev) {
     if (mario.lives <= 0) {
+      ion.sound.stop("mariotheme");
       return;
     }
     var acceptableKeys = [32, 66, 37, 39];
