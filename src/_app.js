@@ -6,46 +6,48 @@ var animate = window.requestAnimateFrame = function (callback) {
 
 
 
-var canvas = document.createElement("canvas");
-var width = 800;
-var height = 400;
-canvas.width = width;
-canvas.height = height;
-var context = canvas.getContext('2d');
+  var canvas = document.createElement("canvas");
+  var width = 800;
+  var height = 400;
+  canvas.width = width;
+  canvas.height = height;
+  var context = canvas.getContext('2d');
 
 
+});
 
-
-window.onload  = function() {
-  //animate();
-  context.fillStyle = "#5c94fc";
-  context.fillRect(0, 0, 800, 400);
-  context.fillStyle = "black";
-  context.fillRect(0, 380, 800, 20);
-  render(step);
-  console.log("Animating");
-
-  ion.sound({
-    sounds: [
-      {name: "die"},
-      {name: "jump"},
-      {name: "stomp"},
-      {name: "worldclear"},
-      {name: "mariotheme"}
-    ],
-    volume: 1.0,
-    path: "./ion/sounds/",
-    preload: true
-  });
-  ion.sound.play("mariotheme");
-
-
-};
-var render = function () {
+  window.onload  = function() {
+    //animate();
     context.fillStyle = "#5c94fc";
-    mario.update();
-    //context.fillRect(0, 0, width, height);
-};
+    context.fillRect(0, 0, 800, 400);
+    context.fillStyle = "black";
+    context.fillRect(0, 380, 800, 20);
+    render(step);
+    console.log("Animating");
+
+    ion.sound({
+      sounds: [
+        {name: "die"},
+        {name: "jump"},
+        {name: "stomp"},
+        {name: "worldclear"},
+        {name: "mariotheme"}
+      ],
+      volume: 1.0,
+      path: "./ion/sounds/",
+      preload: true
+    });
+    ion.sound.play("mariotheme");
+  };
+
+  var render = function () {
+      context.fillStyle = "#5c94fc";
+      // mario.update();
+      //context.fillRect(0, 0, width, height);
+  };
+
+  document.body.appendChild(canvas);
+  animate(step);
 
 
 
@@ -78,9 +80,7 @@ Italian.prototype.update = function() {
     this.lives = 0;
     context.drawImage(gameOver, 250, 10);
     ion.sound.play("worldclear");
-
   }
-
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
   if ((this.y >= 350) && (this.direction === 1)){
@@ -335,9 +335,7 @@ var tardis = new Tardis();
 // koopa.move();
 
 
-// document.body.appendChild(canvas);
-$("#theField").append(canvas);
-animate(step);
+
 
 
 // $("document").ready(function() {
@@ -368,4 +366,3 @@ animate(step);
     }
   });
 // });
-});
