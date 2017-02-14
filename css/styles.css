@@ -22,6 +22,10 @@ Beige - #f7b442;
 #lives {
   float: left;
 }
+.level {
+  float: right;
+  text-align: right;
+}
 .mario {
   float: left;
   padding-top: 20px;
