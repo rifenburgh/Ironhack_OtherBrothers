@@ -116,6 +116,12 @@ Italian.prototype.moveRight = function(ev) {
   }
 };
 
+Italian.prototype.dead = function() {
+  var skull = document.getElementById("skull");
+  // context.drawImage(skull, 1, 1);
+  return;
+};
+
 function Tardis() {
   this.x = (Math.floor(Math.random() * 700) + 50);
   this.y = (Math.floor(Math.random() * 300) + 50);
@@ -177,6 +183,7 @@ Enemy.prototype.update = function() {
   if(((mario.x) < (this.x + 30)) && (mario.x + 30) > (this.x) && ((mario.y) === (this.y + 30))) {
     ion.sound.play("die");
     mario.lives -= 1;
+    // mario.dead();
     console.log("Hit bullet from bottom");
   }
   //Italian hits bullet from top
@@ -216,6 +223,7 @@ Koopa.prototype.update = function() {
       console.log("Hit Koopa!");
       mario.lives -= 1;
       ion.sound.play("die");
+      mario.dead();
   }
   if (((mario.x + 30) > this.x) && ((mario.y + 30) === this.y)) {
       console.log("Koopa Die!");
