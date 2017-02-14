@@ -284,8 +284,28 @@ Cloud.prototype.move = function() {
   this.x = 850;
 };
 
+function Rocks() {
+  this.x = 625;
+  this.y = 338;
+}
+Rocks.prototype.update = function() {
+  //Rocks impage 60x42
+  var rocks = document.getElementById("rocks");
+  if (this.x < 5) {
+    context.fillRect(this.x, this.y, 60, 42);
+    that = this;
+    setTimeout(function() { that.move(); }, 200);
+    return;
+  }
+  context.fillRect(this.x, this.y, 60, 42);
+  this.x -= 1;
+  context.drawImage(rocks, this.x, this.y);
+};
+
 
 var update = function () {
+    cloud.update();
+    rocks.update();
     mario.update();
     // bullet.update();
     bullet1.update();
@@ -296,7 +316,7 @@ var update = function () {
     koopa1.dead();
     koopa2.update();
     // koopa2.dead():
-    cloud.update();
+
     tardis.update();
     // player.update();
     // computer.update(ball);
@@ -319,6 +339,7 @@ var bullet4 = new Enemy();
 var koopa1 = new Koopa();
 var koopa2 = new Koopa();
 var cloud = new Cloud();
+var rocks = new Rocks();
 var tardis = new Tardis();
 
 
