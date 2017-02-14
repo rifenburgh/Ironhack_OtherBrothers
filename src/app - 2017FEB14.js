@@ -155,11 +155,10 @@ Enemy.prototype.update = function() {
     var that = this;
     // setTimeout(function() {that.move(); }, 500);
     // setTimeout(function() {bullet.move(); }, 750);
-
-    setTimeout(function() {bullet1.move(); }, 3000);
-    setTimeout(function() {bullet2.move(); }, 3500);
-    setTimeout(function() {bullet3.move(); }, 4500);
-    setTimeout(function() {bullet4.move(); }, 5000);
+    setTimeout(function() {bullet1.move(); }, 1500);
+    setTimeout(function() {bullet2.move(); }, 2500);
+    setTimeout(function() {bullet3.move(); }, 3500);
+    setTimeout(function() {bullet4.move(); }, 4000);
 
     return;
   }
@@ -254,9 +253,8 @@ Koopa.prototype.dead = function() {
     context.drawImage(koopashell, this.x, this.y);
 };
 function Cloud() {
-  // this.x = 750;
-  this.x = (Math.floor(Math.random() * 150) + 600);
-  this.y = Math.floor(Math.random() * 200);
+  this.x = 750;
+  this.y = Math.floor(Math.random() * 100);
 }
 
 Cloud.prototype.update = function() {
@@ -279,26 +277,25 @@ Cloud.prototype.move = function() {
 
 function Rocks() {
   this.x = 625;
-  this.y = 310;
+  this.y = 338;
 }
 
 Rocks.prototype.update = function() {
-  //Rocks impage 160x70
+  //Rocks impage 60x42
   var rocks = document.getElementById("rocks");
   if (this.x < 5) {
-    context.fillRect(this.x, this.y, 160, 70);
+    context.fillRect(this.x, this.y, 60, 42);
     that = this;
     setTimeout(function() { that.move(); }, 200);
     return;
   }
-  context.fillRect(this.x, this.y, 160, 70);
+  context.fillRect(this.x, this.y, 60, 42);
   this.x -= 1;
   context.drawImage(rocks, this.x, this.y);
 };
 
 var update = function () {
     cloud.update();
-    cloud2.update();
     rocks.update();
     mario.update();
     bullet1.update();
@@ -309,7 +306,6 @@ var update = function () {
     koopa1.dead();
     koopa2.update();
     tardis.update();
-
     // bullet.update();
     // koopa2.dead():
     // player.update();
@@ -333,7 +329,6 @@ var bullet4 = new Enemy();
 var koopa1 = new Koopa();
 var koopa2 = new Koopa();
 var cloud = new Cloud();
-var cloud2 = new Cloud();
 var rocks = new Rocks();
 var tardis = new Tardis();
 
