@@ -177,7 +177,17 @@ Enemy.prototype.update = function() {
   if (((mario.x + 30) === (this.x)) && ((mario.y > this.y) && (mario.y < (this.y + 30)))) {
     ion.sound.play("die");
     mario.lives -= 1;
-    console.log("Hit Bullet!");
+    console.log("Hit bullet from front");
+  }
+  //Italian hits bullet from bottom
+  if(((mario.x) < (this.x + 30)) && (mario.x + 30) > (this.x) && ((mario.y) === (this.y + 30))) {
+    ion.sound.play("die");
+    mario.lives -= 1;
+    console.log("Hit bullet from bottom");
+  }
+  //Italian hits bullet from top
+  if (((mario.x) > (this.x)) && ((mario.x + 30) < (this.x + 33)) && ((mario.y) > (this.y)) && ((mario.y + 30) < (this.y + 30)))  {
+    console.log("Mario is on the bullet");
   }
   // console.log(mario.x, mario.y, this.x, this.y);
 };
