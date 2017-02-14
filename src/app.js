@@ -4,17 +4,12 @@ var animate = window.requestAnimateFrame = function (callback) {
   window.setTimeout(callback, 1000/30);
 };
 
-
-
 var canvas = document.createElement("canvas");
 var width = 800;
 var height = 400;
 canvas.width = width;
 canvas.height = height;
 var context = canvas.getContext('2d');
-
-
-
 
 window.onload  = function() {
   //animate();
@@ -38,16 +33,13 @@ window.onload  = function() {
     preload: true
   });
   ion.sound.play("mariotheme");
-
-
 };
+
 var render = function () {
     context.fillStyle = "#5c94fc";
     mario.update();
     //context.fillRect(0, 0, width, height);
 };
-
-
 
 function Italian() {
   this.x = 30;
@@ -78,9 +70,7 @@ Italian.prototype.update = function() {
     this.lives = 0;
     context.drawImage(gameOver, 250, 10);
     ion.sound.play("worldclear");
-
   }
-
   context.fillStyle = "#5c94fc";
   context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
   if ((this.y >= 350) && (this.direction === 1)){
@@ -117,6 +107,7 @@ Italian.prototype.moveLeft = function(ev) {
     this.x -= 10;
   }
 };
+
 Italian.prototype.moveRight = function(ev) {
   this.direction = 1;
   if (this.x < 770) {
@@ -137,9 +128,7 @@ Tardis.prototype.update = function() {
   }
   var tardis = document.getElementById("tardis");
   var levelcleared = document.getElementById("levelcleared");
-
   context.drawImage(tardis,this.x,this.y);
-
   if (((mario.x) > (this.x -1)) && ((mario.y) > (this.y))) {
     console.log("Level Cleared!!!");
     context.drawImage(levelcleared, 200, 150);
@@ -156,6 +145,7 @@ function Enemy() {
   this.x = 750;
   this.y = 50;
 }
+
 Enemy.prototype.update = function() {
   var bullet = document.getElementById("bullet");
   if (this.x < 5) {
@@ -191,7 +181,6 @@ Enemy.prototype.update = function() {
   if (((mario.x) > (this.x)) && ((mario.x + 30) < (this.x + 33)) && ((mario.y) > (this.y)) && ((mario.y + 30) < (this.y + 30)))  {
     console.log("Mario is on the bullet");
   }
-  // console.log(mario.x, mario.y, this.x, this.y);
 };
 
 Enemy.prototype.move = function() {
@@ -240,6 +229,7 @@ Koopa.prototype.update = function() {
       this.alive = false;
   }
 };
+
 Koopa.prototype.move = function() {
   context.fillRect(this.x, this.y, 20, 25);
   //Create generation point for the new bullet
@@ -247,8 +237,8 @@ Koopa.prototype.move = function() {
   // this.x = 800;
   this.alive = true;
   this.x = 830;
-
 };
+
 Koopa.prototype.dead = function() {
   var koopashell = document.getElementById("koopashell");
   if (this.alive === true) {
@@ -266,6 +256,7 @@ function Cloud() {
   this.x = 750;
   this.y = Math.floor(Math.random() * 100);
 }
+
 Cloud.prototype.update = function() {
   //Cloud impage 50x21
   var cloud = document.getElementById("cloud");
@@ -288,6 +279,7 @@ function Rocks() {
   this.x = 625;
   this.y = 338;
 }
+
 Rocks.prototype.update = function() {
   //Rocks impage 60x42
   var rocks = document.getElementById("rocks");
@@ -302,12 +294,10 @@ Rocks.prototype.update = function() {
   context.drawImage(rocks, this.x, this.y);
 };
 
-
 var update = function () {
     cloud.update();
     rocks.update();
     mario.update();
-    // bullet.update();
     bullet1.update();
     bullet2.update();
     bullet3.update();
@@ -315,9 +305,9 @@ var update = function () {
     koopa1.update();
     koopa1.dead();
     koopa2.update();
-    // koopa2.dead():
-
     tardis.update();
+    // bullet.update();
+    // koopa2.dead():
     // player.update();
     // computer.update(ball);
     // ball.update(player.paddle, computer.paddle);
@@ -328,9 +318,9 @@ var step = function () {
     render();
     animate(step);
 };
+
+
 //Initiate Other Brothers' Game
-
-
 var mario = new Italian();
 var bullet1 = new Enemy();
 var bullet2 = new Enemy();
@@ -348,7 +338,6 @@ var tardis = new Tardis();
 // setTimeout(function() { var bullet2 = new Enemy();}, 1500);
 // setTimeout(function() { var bullet3 = new Enemy();}, 2250);
 // var bullet = new Enemy();
-
 // bullet1.move();
 // bullet2.move();
 // bullet3.move();
@@ -388,5 +377,4 @@ animate(step);
         var koopa1 = new Koopa();
     }
   });
-// });
 });
