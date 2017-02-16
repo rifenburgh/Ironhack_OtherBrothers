@@ -1,5 +1,6 @@
 $("document").ready(function(){
 
+
 var animate = window.requestAnimateFrame = function (callback) {
   window.setTimeout(callback, 1000/30);
 };
