@@ -135,7 +135,8 @@ Tardis.prototype.update = function() {
     context.drawImage(levelcleared, 200, 150);
     setTimeout(function() {
       $("body").empty();
-      $("body").append('<img src="./Images/win.gif"/>');
+      $("body").append("<div class='solitaire'></div>");
+      $(".solitaire").append('<img src="./Images/win.gif" width="100%"/>');
     }, 3000);
     //Include Level Cleared
     ion.sound.stop("mariotheme");
@@ -157,10 +158,10 @@ Enemy.prototype.update = function() {
     // setTimeout(function() {that.move(); }, 500);
     // setTimeout(function() {bullet.move(); }, 750);
 
-    setTimeout(function() {bullet1.move(); }, 3000);
-    setTimeout(function() {bullet2.move(); }, 3500);
-    setTimeout(function() {bullet3.move(); }, 4500);
-    setTimeout(function() {bullet4.move(); }, 5000);
+    setTimeout(function() {bullet1.move(); }, 5000);
+    setTimeout(function() {bullet2.move(); }, 5200);
+    setTimeout(function() {bullet3.move(); }, 5400);
+    setTimeout(function() {bullet4.move(); }, 5600);
 
     return;
   }
