@@ -38,7 +38,6 @@ window.onload  = function() {
 var render = function () {
     context.fillStyle = "#5c94fc";
     mario.update();
-    //context.fillRect(0, 0, width, height);
 };
 
 function Italian() {
@@ -71,8 +70,7 @@ Italian.prototype.update = function() {
     context.drawImage(gameOver, 250, 10);
     ion.sound.play("worldclear");
   }
-  context.fillStyle = "#5c94fc";
-  context.fillRect(this.x, this.y, 30, 30); // context.drawImage(imgNothing, this.x, this.y);
+
   if ((this.y >= 350) && (this.direction === 1)){
     this.y = 350;
     img = imgStanding;
@@ -91,7 +89,6 @@ Italian.prototype.update = function() {
 
 Italian.prototype.move = function (ev) {
   //move the italian
-  context.fillRect(this.x, this.y, 30, 30);
   if (this.y < 30) {
     this.y = 30;
   } else {
@@ -103,7 +100,6 @@ Italian.prototype.move = function (ev) {
 Italian.prototype.moveLeft = function(ev) {
   this.direction = 2;
   if (this.x > 30) {
-    context.fillRect(this.x, this.y, 30, 30);
     this.x -= 10;
   }
 };
@@ -111,7 +107,6 @@ Italian.prototype.moveLeft = function(ev) {
 Italian.prototype.moveRight = function(ev) {
   this.direction = 1;
   if (this.x < 770) {
-    context.fillRect(this.x, this.y, 30, 30);
     this.x += 10;
   }
 };
@@ -156,7 +151,6 @@ function Enemy() {
 Enemy.prototype.update = function() {
   var bullet = document.getElementById("bullet");
   if (this.x < 5) {
-    context.fillRect(this.x, this.y, 33, 30);
     // console.log("Bullets re-creating?");
     this.x = 800;
     var that = this;
@@ -170,7 +164,6 @@ Enemy.prototype.update = function() {
 
     return;
   }
-  context.fillRect(this.x, this.y, 33, 30);
   this.x -= 5;
   context.drawImage(bullet, this.x, this.y);
   //Test Mario's range against the left side of the bullet
@@ -193,7 +186,6 @@ Enemy.prototype.update = function() {
 };
 
 Enemy.prototype.move = function() {
-  context.fillRect(this.x, this.y, 33, 30);
   //Create generation point for the new bullet
   this.x = 850;
   this.y = (Math.floor(Math.random() * 350));
@@ -208,7 +200,6 @@ Koopa.prototype.update = function() {
   //Koopa is 20 x 25
   var koopa = document.getElementById("koopa");
   if ((this.x < 5) || (this.alive === false)) {
-    context.fillRect(this.x, this.y, 20, 25);
     setTimeout(function() { koopa1.move(); }, 6000);
     setTimeout(function() { koopa2.move(); }, 3500);
     return;
@@ -216,7 +207,7 @@ Koopa.prototype.update = function() {
   if (this.alive === false) {
     return;
   }
-  context.fillRect(this.x, this.y, 20, 25);
+
   this.x -= 2;
   context.drawImage(koopa, this.x, this.y);
   if (((mario.x + 30) === this.x) && ((mario.y + 5) === this.y)) {
@@ -231,17 +222,15 @@ Koopa.prototype.update = function() {
       mario.score += 100;
 
       console.log(mario.score);
-      context.fillRect(this.x, this.y, 30, 25);
+
       //!!TESTER!!
       context.drawImage(koopashell, this.x, this.y);
 
-      context.fillRect(this.x, this.y, 30, 25);
       this.alive = false;
   }
 };
 
 Koopa.prototype.move = function() {
-  context.fillRect(this.x, this.y, 20, 25);
   //Create generation point for the new bullet
   // this.y = (Math.floor(Math.random() * 350));
   // this.x = 800;
@@ -258,7 +247,6 @@ Koopa.prototype.dead = function() {
     return;
   }
   // if (koopaCounter < 100) {
-    context.fillRect(this.x, this.y, 30, 22);
     this.x -= 10;
     context.drawImage(koopashell, this.x, this.y);
 };
@@ -272,12 +260,10 @@ Cloud.prototype.update = function() {
   //Cloud impage 50x21
   var cloud = document.getElementById("cloud");
   if (this.x < 5) {
-    context.fillRect(this.x, this.y, 50, 21);
     that = this;
     setTimeout(function() { that.move(); }, 3000);
     return;
   }
-  context.fillRect(this.x, this.y, 50, 21);
   this.x -= 1;
   context.drawImage(cloud, this.x, this.y);
 
@@ -295,12 +281,10 @@ Rocks.prototype.update = function() {
   //Rocks impage 160x70
   var rocks = document.getElementById("rocks");
   if (this.x < 5) {
-    context.fillRect(this.x, this.y, 160, 70);
     that = this;
     setTimeout(function() { that.move(); }, 3000);
     return;
   }
-  context.fillRect(this.x, this.y, 160, 70);
   this.x -= 1;
   context.drawImage(rocks, this.x, this.y);
 };
@@ -310,6 +294,11 @@ Rocks.prototype.move = function() {
 };
 
 var update = function () {
+    context.fillStyle = "#5c94fc";
+    context.fillRect(0, 0, 800, 400);
+    context.fillStyle = "black";
+    context.fillRect(0, 380, 800, 20);
+
     cloud.update();
     cloud2.update();
     rocks.update();
@@ -322,7 +311,6 @@ var update = function () {
     koopa1.dead();
     koopa2.update();
     tardis.update();
-
     // bullet.update();
     // koopa2.dead():
     // player.update();
