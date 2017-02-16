@@ -136,7 +136,7 @@ Tardis.prototype.update = function() {
     setTimeout(function() {
       $("body").empty();
       $("body").append("<div class='solitaire'></div>");
-      $(".solitaire").append('<img src="./Images/win.gif" width="100%"/>');
+      $(".solitaire").append('<img src="./Images/win.gif" width="80%"/>');
     }, 3000);
     //Include Level Cleared
     ion.sound.stop("mariotheme");
